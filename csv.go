@@ -166,6 +166,11 @@ func UnmarshalWithoutHeaders(in io.Reader, out interface{}) error {
 	return readToWithoutHeaders(newDecoder(in), out)
 }
 
+// UnmarshalCSVWithoutHeaders parses the CSV from the reader in the interface.
+func UnmarshalCSVWithoutHeaders(in CSVReader, out interface{}) error {
+	return readToWithoutHeaders(csvDecoder{in}, out)
+}
+
 // UnmarshalDecoder parses the CSV from the decoder in the interface
 func UnmarshalDecoder(in Decoder, out interface{}) error {
 	return readTo(in, out)
